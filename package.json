@@ -6,10 +6,8 @@
   "scripts": {
     "lint": "eslint . --ext js,json",
     "lint:fix": "eslint . --fix --ext js,json",
-    "serve": "browserify ./src/contract.js -o ./src/bundle.js && static-server ./src --port 9012",
-    "test": "yarn lint",
-    "dist": "static-server ./dist --port 9012",
-    "build": "browserify ./src/contract.js -o ./src/bundle.js && parcel build src/index.html"
+    "serve": "static-server ./src --port 9012",
+    "test": "yarn lint"
   },
   "files": [
     "contract.js",
