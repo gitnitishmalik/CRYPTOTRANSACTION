@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto transaction</title>
+  <link rel="icon" type="image/png" href="Crypto transaction.ico">
+  <!-- Google Fonts and Styles -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css">
+  <style>
+    html, body {
+      height: 100%; margin: 0; background: #0a0a23;
+      font-family: 'Roboto', sans-serif; overflow-x: hidden;
+    }
+    #cryptoRain {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 0;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+    .crypto-float {
+      position: fixed; z-index: 3; pointer-events: none;
+      opacity: 0.92;
+      animation: floatY 5s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 25px #03fc7bee) drop-shadow(0 0 16px #145cebaa);
+    }
+    .crypto-float.eth {
+      left: 77vw; top: 14vh; width: 54px;
+      animation-delay: 2.1s;
+      filter: drop-shadow(0 0 27px #c2bfff) drop-shadow(0 0 13px #fff);
+    }
+    .crypto-float.btc {
+      left: 11vw; top: 70vh; width: 58px;
+      animation-delay: 0.7s;
+      filter: drop-shadow(0 0 40px #ffe100) drop-shadow(0 0 11px #fff);
+    }
+    @keyframes floatY {
+      from { transform: translateY(0) scale(1.07); }
+      to   { transform: translateY(15px) scale(1.1);}
+    }
+    main, .container-fluid, .container { position: relative; z-index: 7; }
+    .section-title {
+      color: #ffc15d;
+      text-shadow: 0 2px 14px #9cfcf8c0, 0 2px 21px #ffeba188;
+      letter-spacing: 0.10em;
+      margin-top: 36px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .transaction-card, .account-card {
+      background: rgba(24,27,52,0.22);
+      border-radius: 18px;
+      box-shadow: 0 4px 18px #10f3fe13, 0 2px 8px #74fbe36e;
+      margin-bottom: 2em; margin-top: 2em;
+      color: #efeefd;
+      padding: 2.5em 1.8em 2em 1.8em;
+      transition: box-shadow 0.25s, background 0.25s, transform 0.22s;
+    }
+    .transaction-card:hover, .account-card:hover{
+      box-shadow: 0 8px 36px #16f6d522, 0 4px 17px #ffcd8699;
+      background: rgba(28,33,67,0.32);
+      transform: scale(1.02);
+    }
+    .card-title {
+      color: #85862f;
+      font-size: 1.6em;
+      font-weight: 800;
+      letter-spacing: .06em;
+      margin-bottom: 1em;
+      text-shadow: 0 2px 8px #3f3f1540;
+    }
+    .card-or {
+      color: #a58525;
+      font-size: 1.13em;
+      margin: 2em 0 0.6em 0;
+      text-align: center;
+      font-style: italic;
+      opacity: 0.89;
+    }
+    .btn {
+      border-radius: 0.9rem;
+      font-size: 1.18rem;
+      font-weight: 600;
+      background-image: linear-gradient(111deg, #1d3135 23%, #070f10 60%);
+      color: #fff;
+      box-shadow: 0 7px 22px #1c1f1f92, 0 2px 8px #239ea545;
+      border: none;
+      margin-bottom: 1rem;
+      transition: transform .14s, box-shadow .17s, background .22s;
+    }
+    .btn:hover:not(:disabled), .btn:active:not(:disabled) {
+      transform: scale(0.95) translateY(-3px);
+      color:#fff;
+      background-image: linear-gradient(111deg, #1d3135 53%, #070f10  40%);
+      box-shadow: 0 12px 32px #10e2fa53, 0 4px 17px #ffc15dae;
+    }
+    input, input.info-text {
+      border: none; border-radius: 0.6em;
+      box-shadow: 0 0 0 2px #ae4f1f6e inset;
+      background: #15173e;
+      color: #dcd8ff;
+      padding: 0.8em 1rem;
+      font-size: 1em;
+      margin-bottom: 1rem;
+      width: 100%;
+      transition: box-shadow .19s, background .19s;
+    }
+    input:focus {
+      background: #13174d;
+      outline: none;
+      box-shadow: 0 0 0 4px #fc192490 inset;
+    }
+    .info-text.alert {
+      background: linear-gradient(101deg, #0e1d31cc 74%, #122b2b 100%);
+      border-radius: 11px; box-shadow: 0 1px 8px #0c6dffaf;
+      color: #e9ffea; border: none;
+      font-weight: 500; margin-top: 1.1rem;
+    }
+    @media (max-width: 768px) {
+      .crypto-float.eth { left: 79vw; top: 5vh; width: 31px;}
+      .crypto-float.btc { left: 14vw; top: 85vh; width: 32px;}
+      .transaction-card, .account-card { padding: 1.1em 0.6em;}
+      .container { padding: 0 5px;}
+      .section-title { margin-top: 15px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Matrix Rain -->
+  <canvas id="cryptoRain"></canvas>
+  <!-- Glowing coin icons -->
+  <img class="crypto-float btc" src="assets/bitcoin.png" alt="Bitcoin Logo" />
+  <img class="crypto-float eth" src="https://cdn-icons-png.flaticon.com/512/7016/7016523.png" alt="Ethereum Logo" />
+
+
+  <main class="container">
+    <section>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+          <div class="transaction-card">
+            <div class="card-body">
+              <h3 class="card-title">DEPLOY CONTACT</h3>
+              <button class="btn btn-lg btn-block" id="deployButton">Deploy Contract</button>
+              <h4 class="card-or">Or Use Previously Deployed</h4>
+              <input type="text" id="deployedContractAddress" class="info-text" placeholder="Enter contract address">
+              <button class="btn btn-lg btn-block" id="setContractButton">Set Contract Address</button>
+              <button class="btn btn-lg btn-block" id="depositButton" disabled>DEPOSIT</button>
+              <button class="btn btn-lg btn-block" id="withdrawButton" disabled>WITHDRAW</button>
+              <p class="info-text alert">Contract Status: <span id="contractStatus">Not clicked</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="account-card">
+            <div class="card-body">
+              <h3 class="card-title">ACCOUNT INFORMATION</h3>
+              <p class="info-text alert">Network: <span id="network"></span></p>
+              <p class="info-text alert">ChainId: <span id="chainId"></span></p>
+              <button class="btn btn-lg btn-block" id="connectButton">Connect</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    // --- Matrix code rain effect ---
+    const canvas = document.getElementById('cryptoRain');
+    const ctx = canvas.getContext('2d');
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    canvas.width = w;
+    canvas.height = h;
+    const cryptoChars = '₿ΞETHBTC0x123456789ABCDEF';
+    const fontSize = 22;
+    const columns = Math.floor(w / fontSize);
+    const drops = Array.from({ length: columns }).map(() => Math.random() * h / fontSize);
+    function drawMatrixRain() {
+      ctx.fillStyle = "rgba(10,18,40,0.23)";
+      ctx.fillRect(0, 0, w, h);
+      ctx.font = `${fontSize}px monospace, 'Roboto', 'Consolas', monospace`;
+      ctx.shadowColor = "#00ffb3";
+      ctx.shadowBlur = 14;
+      for (let i = 0; i < drops.length; i++) {
+        const text = cryptoChars.charAt(Math.floor(Math.random() * cryptoChars.length));
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+        ctx.fillStyle = [
+          "#fffbe9", "#30fff6", "#faff00", "#ffbe3f"
+        ][i % 4];
+        ctx.fillText(text, x, y);
+        if (y > h && Math.random() > 0.93) drops[i] = 0;
+        else drops[i]++;
+      }
+      ctx.shadowBlur = 0;
+    }
+    setInterval(drawMatrixRain, 55);
+    window.addEventListener('resize', () => {
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w;
+      canvas.height = h;
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="metamask-onboarding.bundle.js" defer></script>
+  <script src="bundle.js" defer></script>
+  <script>
+    // --- MetaMask Connect Button ---
+    window.addEventListener('DOMContentLoaded', function() {
+      const connectButton = document.getElementById('connectButton');
+      const networkSpan = document.getElementById('network');
+      const chainIdSpan = document.getElementById('chainId');
+      const contractStatus = document.getElementById('contractStatus');
+
+      // Check if MetaMask is available
+      if(typeof window.ethereum !== "undefined") {
+        connectButton.disabled = false;
+        connectButton.addEventListener('click', async function() {
+          try {
+            // Request account access if needed
+            const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+            // Get network information
+            const chainId = await window.ethereum.request({ method: "eth_chainId" });
+            const netVersion = await window.ethereum.request({ method: "net_version" });
+
+            networkSpan.innerText = netVersion;
+            chainIdSpan.innerText = chainId;
+            contractStatus.innerText = "Connected to MetaMask!";
+
+            // Optional: update user info/display account
+            // document.getElementById('userAddress').innerText = accounts[0];
+          } catch (err) {
+            contractStatus.innerText = "Connection failed: " + err.message;
+          }
+        });
+      } else {
+        connectButton.disabled = true;
+        contractStatus.innerText = "MetaMask not found. Please install MetaMask!";
+      }
+    });
+  </script>
+</body>
+</html>

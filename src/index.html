@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto Transaction - Home</title>
+  <link rel="icon" type="image/png" href="CryptoTransaction.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
+  <style>
+    html, body { height: 100%; margin: 0; background: #0a0a23; font-family: 'Roboto', sans-serif; overflow-x: hidden;}
+    #cryptoRain {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 0;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+    .crypto-float {
+      position: fixed; z-index: 3; pointer-events: none;
+      opacity: 0.92;
+      animation: floatY 5s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 25px #fcc603ee) drop-shadow(0 0 16px #14e2ebaa);
+    }
+    .crypto-float.eth {
+      left: 78vw; top: 11vh; width: 61px;
+      animation-delay: 1.8s;
+      filter: drop-shadow(0 0 27px #c2bfff) drop-shadow(0 0 13px #fff);
+    }
+    .crypto-float.btc {
+      left: 8vw; top: 68vh; width: 64px;
+      animation-delay: 0s;
+      filter: drop-shadow(0 0 40px #ffe100) drop-shadow(0 0 11px #fff);
+    }
+    @keyframes floatY {
+      from { transform: translateY(0) scale(1.06); }
+      to {   transform: translateY(13px) scale(1.1);}
+    }
+    header, main, nav, .container-fluid { position: relative; z-index: 7; }
+    .logo { width: 48px; height: 48px; vertical-align: middle; margin-right: 10px;}
+    .navbar {
+      background: rgba(21,20,40,0.85)!important;
+      border-radius: 0 0 24px 24px;
+      box-shadow: 0 4px 18px #10f3fe17;
+    }
+    .display-4 {
+      color: #fff0cc;
+      text-shadow: 0 4px 28px #00ffe699, 0 1px 5px #000;
+    }
+    .hero-section {
+      background: rgba(19,23,63,0.34);
+      border-radius: 22px;
+      margin-top: 36px; margin-bottom: 10px;
+      box-shadow: 0 6px 48px #00fff35b;
+    }
+    .crypto-image {
+      border-radius: 1.7em;
+      box-shadow: 0 2px 18px #00fa9a86;
+      width: 100%; height: auto; min-width: 260px;
+      margin-top: 15px;
+    }
+    .card {
+      box-shadow: 0 4px 16px #59c7e899, 0 1px 5px #10d1d1;
+    }
+    .card-title, .card-text {
+      color: #33efe5;
+      text-shadow: 0 1px 13px #fff5df60;
+    }
+    .section-title {
+      color: #ffc15d;
+      text-shadow: 0 2px 14px #9cfcf8c0, 0 2px 21px #ffeba188;
+      letter-spacing: 0.11em;
+    }
+    .btn-light {
+      background: #f8eacd!important; color: #252b34!important; border-radius: 20px; font-weight: bold;
+      box-shadow: 0 2px 10px #f8eacd4f;
+      border: none;
+    }
+    .btn-light:hover {
+      background: #ffe881!important;
+      box-shadow: 0 4px 14px #fceb9279;
+      color: #002b40!important;
+    }
+    @media (max-width: 768px) {
+      .crypto-float.eth { left: 70vw; top: 4vh; width: 39px;}
+      .crypto-float.btc { left: 7vw; top: 78vh; width: 41px;}
+      .logo { width: 35px; height: 35px;}
+      .crypto-image { min-width: 150px;}
+      .container, .main { padding: 0 6px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Matrix crypto code rain background -->
+  <canvas id="cryptoRain"></canvas>
+  <!-- Glowing floating coin icons -->
+  <img class="crypto-float btc" src="assets/bitcoin.png" alt="Bitcoin Logo" />
+  <img class="crypto-float eth" src="https://cdn-icons-png.flaticon.com/512/7016/7016523.png" alt="Ethereum Logo" />
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/bitcoin.png" alt="Crypto Logo" class="logo">
+        CRYPTO TRANSACTION
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="transaction.html">TRANSACTION</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="aboutus.html">ABOUT US</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">SERVICES</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container-fluid">
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <h1 class="display-4">WELCOOME </h1>
+            <p class="lead">Your trusted platform for secure cryptocurrency transactions and trading.</p>
+            <a href="transaction.html" class="btn btn-light btn-lg">START TRADING </a>
+          </div>
+          <div class="col-md-6">
+            <img src="https://images.unsplash.com/photo-1622630998477-20aa696ecb05?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                 alt="Cryptocurrency Trading" 
+                 class="crypto-image">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container my-5">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">Secure Transactions</h5>
+              <p class="card-text">Your transactions are protected with the latest blockchain technology and security measures.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">Real-time Trading</h5>
+              <p class="card-text">Access real-time market data and execute trades instantly with our advanced platform.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">24/7 Support</h5>
+              <p class="card-text">Our dedicated support team is available around the clock to assist you with any queries.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // --- Matrix code rain effect ---
+    const canvas = document.getElementById('cryptoRain');
+    const ctx = canvas.getContext('2d');
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    canvas.width = w;
+    canvas.height = h;
+    const cryptoChars = '₿ΞETHBTC0x123456789ABCDEF';
+    const fontSize = 22;
+    const columns = Math.floor(w / fontSize);
+    const drops = Array.from({ length: columns }).map(() => Math.random() * h / fontSize);
+    function drawMatrixRain() {
+      ctx.fillStyle = "rgba(10,18,40,0.23)";
+      ctx.fillRect(0, 0, w, h);
+      ctx.font = `${fontSize}px monospace, 'Roboto', 'Consolas', monospace`;
+      ctx.shadowColor = "#00ffb3";
+      ctx.shadowBlur = 14;
+      for (let i = 0; i < drops.length; i++) {
+        const text = cryptoChars.charAt(Math.floor(Math.random() * cryptoChars.length));
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+        ctx.fillStyle = [
+          "#fffbe9", "#30fff6", "#faff00", "#ffbe3f"
+        ][i % 4];
+        ctx.fillText(text, x, y);
+        if (y > h && Math.random() > 0.93) drops[i] = 0;
+        else drops[i]++;
+      }
+      ctx.shadowBlur = 0;
+    }
+    setInterval(drawMatrixRain, 55);
+    window.addEventListener('resize', () => {
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w;
+      canvas.height = h;
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="metamask-onboarding.bundle.js" defer></script>
+  <script src="bundle.js" defer></script>
+</body>
+</html>

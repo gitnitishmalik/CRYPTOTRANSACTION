@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto transaction - Services</title>
+  <link rel="icon" type="image/png" href="Crypto transaction.ico">
+
+  <!-- Google Fonts and Styles -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="services.css">
+  <style>
+    html, body {
+      height: 100%; margin: 0; background: #0a0a23;
+      font-family: 'Roboto', sans-serif; overflow-x: hidden;
+    }
+    #cryptoRain {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 0;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+    .crypto-float {
+      position: fixed; z-index: 3; pointer-events: none;
+      opacity: 0.92;
+      animation: floatY 5s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 25px #fcc603ee) drop-shadow(0 0 16px #14e2ebaa);
+    }
+    .crypto-float.eth {
+      left: 77vw; top: 14vh; width: 54px;
+      animation-delay: 2.1s;
+      filter: drop-shadow(0 0 27px #c2bfff) drop-shadow(0 0 13px #fff);
+    }
+    .crypto-float.btc {
+      left: 11vw; top: 70vh; width: 58px;
+      animation-delay: 0.7s;
+      filter: drop-shadow(0 0 40px #ffe100) drop-shadow(0 0 11px #fff);
+    }
+    @keyframes floatY {
+      from { transform: translateY(0) scale(1.07); }
+      to   { transform: translateY(15px) scale(1.1);}
+    }
+    header, main, nav, .container-fluid { position: relative; z-index: 7; }
+    .navbar {
+      background: rgba(21,20,40,0.84)!important;
+      border-radius: 0 0 18px 18px;
+      box-shadow: 0 4px 18px #10f3fe21;
+    }
+    .section-title {
+      color: #ffc15d;
+      text-shadow: 0 2px 14px #9cfcf8c0, 0 2px 21px #ffeba188;
+      letter-spacing: 0.10em;
+      margin-top: 36px;
+    }
+    .service-card {
+      background: rgba(24,27,52,0.16);
+      border-radius: 18px;
+      padding: 2.1em 1.5em 1.12em 1.5em;
+      box-shadow: 0 4px 14px #16f6c822, 0 2px 8px #74fbe36e;
+      margin-bottom: 2em;
+      color: #efeefd;
+      text-align: left;
+      transition: box-shadow 0.25s;
+    }
+    .service-card:hover {
+      box-shadow: 0 8px 36px #16f6d522, 0 4px 17px #ffcd8699;
+      background: rgba(28,33,67,0.22);
+      transform: scale(1.03);
+    }
+    .service-title {
+      color: #25e6e1;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.7em;
+      text-shadow: 0 2px 8px #30fff640;
+    }
+    .service-description {
+      font-size: 1.15em;
+      color: #f4eede;
+      text-shadow: 0 1px 10px #005a5021;
+    }
+    @media (max-width: 768px) {
+      .crypto-float.eth { left: 79vw; top: 5vh; width: 31px;}
+      .crypto-float.btc { left: 14vw; top: 85vh; width: 32px;}
+      .service-card { padding: 1.1em 0.75em;}
+      .container, .main { padding: 0 5px;}
+      .section-title { margin-top: 15px;}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Matrix crypto code rain background -->
+  <canvas id="cryptoRain"></canvas>
+  <!-- Glowing floating coin icons -->
+  <img class="crypto-float btc" src="assets/bitcoin.png" alt="Bitcoin Logo" />
+  <img class="crypto-float eth" src="https://cdn-icons-png.flaticon.com/512/7016/7016523.png" alt="Ethereum Logo" />
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">Crypto transaction</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="transaction.html">TRANSACTION</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="aboutus.html">ABOUT US</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="services.html">SERVICES<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2 class="section-title">Our Services</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="service-card">
+            <h3 class="service-title">Secure Transactions</h3>
+            <p class="service-description">We provide secure transactions around the globe, ensuring your peace of mind.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="service-card">
+            <h3 class="service-title">Personal Ownership</h3>
+            <p class="service-description">With us, your assets are securely stored and managed, giving you full control and ownership.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // --- Matrix code rain effect ---
+    const canvas = document.getElementById('cryptoRain');
+    const ctx = canvas.getContext('2d');
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    canvas.width = w;
+    canvas.height = h;
+    const cryptoChars = '₿ΞETHBTC0x123456789ABCDEF';
+    const fontSize = 22;
+    const columns = Math.floor(w / fontSize);
+    const drops = Array.from({ length: columns }).map(() => Math.random() * h / fontSize);
+    function drawMatrixRain() {
+      ctx.fillStyle = "rgba(10,18,40,0.23)";
+      ctx.fillRect(0, 0, w, h);
+      ctx.font = `${fontSize}px monospace, 'Roboto', 'Consolas', monospace`;
+      ctx.shadowColor = "#00ffb3";
+      ctx.shadowBlur = 14;
+      for (let i = 0; i < drops.length; i++) {
+        const text = cryptoChars.charAt(Math.floor(Math.random() * cryptoChars.length));
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+        ctx.fillStyle = [
+          "#fffbe9", "#30fff6", "#faff00", "#ffbe3f"
+        ][i % 4];
+        ctx.fillText(text, x, y);
+        if (y > h && Math.random() > 0.93) drops[i] = 0;
+        else drops[i]++;
+      }
+      ctx.shadowBlur = 0;
+    }
+    setInterval(drawMatrixRain, 55);
+    window.addEventListener('resize', () => {
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w;
+      canvas.height = h;
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="metamask-onboarding.bundle.js" defer></script>
+  <script src="bundle.js" defer></script>
+</body>
+</html>
