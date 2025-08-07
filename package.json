@@ -1,5 +1,5 @@
 {
-  "name": "CryptoTransaction",
+  "name": "cryptotransaction",
   "version": "1.0.0",
   "description": "Building a simple Crypto Transaction Application.",
   "type": "module",
@@ -10,10 +10,11 @@
     "test": "yarn lint",
     "dist": "static-server ./dist --port 9012",
     "build": "browserify ./src/contract.js -o ./src/bundle.js && parcel build src/index.html"
+    
   },
   "files": [
-    "/contract.js",
-    "/index.html"
+    "contract.js",
+    "index.html"
   ],
   "author": "menezesphill",
   "license": "MIT",
